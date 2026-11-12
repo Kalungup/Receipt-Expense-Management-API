@@ -1,5 +1,11 @@
 services:
   api:
     build: .
+    container_name: receipt-api
     ports:
       - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_PATH=/app/data/receipts.db
+    restart: unless-stopped
